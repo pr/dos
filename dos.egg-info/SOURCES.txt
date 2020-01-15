@@ -1,0 +1,7 @@
+README.md
+setup.py
+dos/__init__.py
+dos.egg-info/PKG-INFO
+dos.egg-info/SOURCES.txt
+dos.egg-info/dependency_links.txt
+dos.egg-info/top_level.txt
