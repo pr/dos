@@ -1,0 +1,14 @@
+[MESSAGES CONTROL]
+
+# C0114: Missing module docstring (missing-module-docstring)
+# C0115: Missing class docstring (missing-class-docstring)
+# C0116: Missing function or method docstring (missing-function-docstring)
+# C0301: Line too long (line-too-long)
+# R0903: Too few public methods (too-few-public-methods)
+# R0912: Too many branches (too-many-branches)
+# R0913: Too many arguments (too-many-arguments)
+# R0914: Too many local variables (too-many-locals)
+
+disable=C0114,C0115,C0116,C0301,R0903,R0912,R0913,R0914
+
+
