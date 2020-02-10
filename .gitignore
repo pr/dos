@@ -1,3 +1,4 @@
 /.coverage
 /.idea
 /src/dos.egg-info/
+/dist/
