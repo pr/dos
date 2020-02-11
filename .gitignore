@@ -2,3 +2,4 @@
 /.idea
 /src/dos.egg-info/
 /dist/
+/build/
