@@ -8,7 +8,7 @@ endpoints with both built in validation and automatically generated documentatio
 
 ## Hello World
 
-> All of this code is found in the [pet_shop](https://github.com/pr/dos/examples/tutorial/pet_shop) example. 
+> All of this code is found in the [pet_shop](https://github.com/pr/dos/tree/master/examples/tutorial/pet_shop) example. 
 > For a more substantive look at dos, please see [dos in depth](#dos-in-depth)
 
 Let's look at the structure of a typical dos endpoint. The following code defines the `/dog/get` endpoint.

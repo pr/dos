@@ -1,4 +1,4 @@
-# pet_shop Introduction
+# pet_shop
 
 This is a very simple Flask app built to show the functionality of `dos`. It is creates 
 a simple API for a pet shop. 
