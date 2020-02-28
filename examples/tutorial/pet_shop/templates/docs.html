@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Pet Store API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      @import url(//fonts.googleapis.com/css?family=Roboto:400,700);
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 14px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="redoc_container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"> </script>
+    <script>
+      Redoc.init(
+        "/open_api.json",
+        { "showConsole": false,
+          "hideDownloadButton": true,
+          "menuToggle": true,
+          "layout": {
+            "scope":"section"
+          },
+          "theme": {
+            "logo": {
+              "gutter":"20px 30px 14px 30px"
+            },
+            "colors": {
+              "primary": {
+                "main": "#1A428A"
+              },
+              "text": {
+                "primary":"#000000"
+              }
+            },
+            "typography": {
+              "headings": {
+                "fontFamily":"Roboto"
+              },
+              "fontFamily": "Roboto, Verdana, Geneva, sans-serif","fontSize":"14px",
+              "rightPanelHeading": {
+                "color":"black"
+              }
+             },
+            "rightPanel": {
+              "backgroundColor":"#1A428A",
+              "textColor": "#FFFFFF"
+            },
+            "menu": {
+              "backgroundColor": '#7D9FC3',
+            },
+            "links": {
+              "color":"#5B89B4"
+            }
+          },
+        },
+        document.getElementById("redoc_container")
+      );
+    </script>
+  </body>
+</html>

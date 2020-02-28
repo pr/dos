@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Welcome</title>
+    </head>
+    <body>
+        <p>This is the sparse frontend for a basic pet shop API.</p>
+        <p>To see the automatically generated documentation, look <a href="/docs">here</a>.</p>
+        <p>To see the Open API 3.0 source, look <a href="/source">here</a>.</p>
+        <br/>
+        <p>To actually test the API, you can use curl. Run: </p>
+        <code>curl --header "Content-Type: application/json" --request GET --data '{"name":"Butterball"}' http://localhost:5000/cat/get</code>
+        <p>You will get back the JSON of the cat object.</p>
+        <code>{ "breed": "Tabby", "color": "Orange", "name": "Butterball" }</code>
+        <p>If you give the API the name of a non existant cat, it will tell you.</p>
+        <code>curl --header "Content-Type: application/json" --request GET --data '{"name":"Fake Cat Name"}' http://localhost:5000/cat/get</code>
+        <p>Gives:</p>
+        <code>{ "message": "No cat by that name found!"}</code>
+        <p>This matches the behavior outlined in the <a href="http://localhost:5000/docs#operation//cat/get">docs</a>.</p>
+        <p>For more about how it works, please consult the full <code>dos</code> <a href="http://github.com/pr/dos">documentation</a>.</p>
+    </body>
+</html>

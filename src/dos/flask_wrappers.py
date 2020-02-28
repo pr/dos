@@ -1,6 +1,58 @@
 from http import HTTPStatus
-from flask import request
+from flask import request, jsonify
+from functools import wraps
+from http.client import responses
 from dos import prop
+
+
+def wrap_handler(name, func):
+
+    def wrapper(*a, **kw):
+        return func(*a, **kw)
+
+    wrapper.__name__ = name
+    return wrapper
+
+
+def wrap_route(app, func, rule, http_methods, *a, **kw):
+
+    kw = kw.copy()
+
+    if type(http_methods) == str:
+        kw.setdefault("methods", [http_methods.upper()])
+    elif type(http_methods) == list:
+        kw.setdefault("methods", [method.upper() for method in http_methods])
+    else:
+        raise Exception("Not a valid representation of supported http methods.")
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+
+        func_response = func(*args, **kwargs)
+
+        if type(func_response) == dict:
+            ret = func_response
+            status = ret.get("status", HTTPStatus.OK)
+        elif type(func_response) == tuple:
+            ret = func_response[1]
+
+            affiliated_response = responses.get(func_response[0])
+            if affiliated_response is None:
+                raise Exception(f"{func_response[0]} is not a valid http code!!")
+            else:
+                status = func_response[0]
+        else:
+            raise Exception("Must be a dict or a tuple!")
+
+        resp = jsonify(ret)
+        return resp, status
+
+    kw.setdefault("endpoint", rule)
+
+    wrapped = app.route(rule, *a, **kw)(wrapper)
+    wrapped.provide_automatic_options = False
+
+    return wrapper
 
 
 def wrap_validation(handler, module):

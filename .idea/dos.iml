@@ -4,8 +4,20 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/dos" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example/api_model" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example/api" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example/api/car" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example/bin" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example/flask_app/templates" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example/flask_app" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example/flask_app/static" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples/tutorial/pet_shop" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples/tutorial/pet_shop/api" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples/tutorial" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="redoc.standalone" level="application" />
   </component>
 </module>
