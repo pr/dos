@@ -113,6 +113,7 @@ def test_validate_input_wrong_type():
 
     http_status, reject_dict = validate_input(given_request, input_schema)
     assert reject_dict == {
+        'message': 'A field has an error.',
         'field_error_messages': {
             'basic_string': "The value ['what', 'the', 'heck', 'is', 'this'] from field "
                             "'basic_string' is the wrong type, expected: String"
@@ -149,6 +150,7 @@ def test_validate_input_string_id_not_a_number():
 
     http_status, reject_dict = validate_input(given_request, input_schema)
     assert reject_dict == {
+        'message': 'A field has an error.',
         'field_error_messages': {
             'id': "The value 'banana_phone' from field 'id' is "
                   "the wrong type, expected: Number"
@@ -223,14 +225,13 @@ def test_validate_input_one_of_invalid():
 
     http_status, reject_dict = validate_input(given_request, input_schema)
     assert reject_dict == {
+        'message': 'A field has an error.',
         'field_error_messages': {
-
             'id': ("The value 'banana_phone' from field 'id' is not valid for one of the defined props for "
                    "the following reasons: String is not the correct length! The string 'banana_phone' is "
                    "12 characters long, not 3!, String is not the correct length! The string 'banana_phone' is "
                    "12 characters long, not 8!, The value 'banana_phone' from field 'id' is the wrong "
                    'type, expected: Number')
-
         }
     }
 
@@ -302,6 +303,7 @@ def test_validate_input_exact_length_string():
 
     http_status, reject_dict = validate_input(given_request, input_schema)
     assert reject_dict == {
+        'message': 'A field has an error.',
         'field_error_messages': {
             'basic_string': 'String is not the correct length! The string \'noteightlong\' is 12 characters long, not 8!'
         }
@@ -329,6 +331,7 @@ def test_validate_input_exact_length_object():
 
     http_status, reject_dict = validate_input(given_request, input_schema)
     assert reject_dict == {
+        'message': 'A field has an error.',
         'field_error_messages': {'basic_object': 'ExactLength is not supported for class Object!!'}
     }
 
@@ -347,6 +350,7 @@ def test_validate_social_security_number():
 
     http_status, reject_dict = validate_input(given_request, input_schema)
     assert reject_dict == {
+        'message': 'A field has an error.',
         'field_error_messages': {
             'social_security_number': '219099999 is not a valid social security number!'
         }
@@ -366,6 +370,7 @@ def test_validate_number_social_security_number():
 
     http_status, reject_dict = validate_input(given_request, input_schema)
     assert reject_dict == {
+        'message': 'A field has an error.',
         'field_error_messages': {
             'social_security_number': 'SocialSecurityNumber is not supported for class Number!!'
         }
@@ -385,8 +390,33 @@ def test_impossible_validation():
 
     http_status, reject_dict = validate_input(given_request, input_schema)
     assert reject_dict == {
+        'message': 'A field has an error.',
         'field_error_messages': {
             'social_security_number': 'String is not the correct length! The string \'578271234\' is 9 characters long, not 3!'
+        }
+    }
+
+    assert http_status == HTTPStatus.BAD_REQUEST
+
+
+def test_multiple_invalid_fields_validation():
+    input_schema = {
+        "social_security_number": prop.String(validators=[validators.SocialSecurityNumber()]),
+        "exact_length_string": prop.String(validators=[validators.ExactLength(3)]),
+    }
+
+    given_request = {
+        "social_security_number": "578234",
+        "exact_length_string": "not three long",
+    }
+
+    http_status, reject_dict = validate_input(given_request, input_schema)
+    assert reject_dict == {
+        'message': 'Multiple fields have an error.',
+        'field_error_messages': {
+            'exact_length_string': "String is not the correct length! "
+                                   "The string 'not three long' is 14 characters long, not 3!",
+            'social_security_number': '578234 is not a valid social security number!'
         }
     }
 

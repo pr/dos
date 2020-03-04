@@ -1,7 +1,8 @@
+from dos.schema import ErrorFields
 from flask import request
 from http import HTTPStatus
 
-from pet_shop.model import DogFields, ErrorFields
+from pet_shop.model import DogFields
 
 
 def handler():

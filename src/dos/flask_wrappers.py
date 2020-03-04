@@ -139,6 +139,12 @@ def validate_input(given_request, input_schema):
         reject_dict["message"] = ' /// '.join(message)
 
     if field_error_messages:
+        if "message" not in reject_dict:
+            if len(field_error_messages) == 1:
+                reject_dict["message"] = "A field has an error."
+            else:
+                reject_dict["message"] = "Multiple fields have an error."
+
         reject_dict["field_error_messages"] = field_error_messages
 
     return http_status, reject_dict

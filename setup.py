@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="dos",
-    version="1.1.0",
+    version="1.2.0",
     author="Peter Richards",
     author_email="prichards@cap-rx.com",
     license='MIT',

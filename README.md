@@ -23,12 +23,12 @@ Let's look at the structure of a typical dos endpoint. The following code define
 
 ```python
 from http import HTTPStatus
-from pet_shop.model import DogFields, ErrorFields
+from dos.schema import ErrorFields
+from pet_shop.model import DogFields
 
 def handler():
 
-    # this would be a database query 
-    dog_found = True
+    # ... database query looking for the dog ...
 
     if dog_found:
         dog = {
