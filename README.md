@@ -6,6 +6,14 @@ dos is a Python package to make it easy to document and validate a Flask API. Wr
 endpoints with both built in validation and automatically generated documentation. The documentation is Open API 3.0 
 (formerly known as Swagger) in JSON form. 
 
+## Installation 
+
+You can install the latest version of dos with pip.
+
+```bash
+pip install dos
+```
+
 ## Hello World
 
 > All of this code is found in the [pet_shop](https://github.com/pr/dos/tree/master/examples/tutorial/pet_shop) example. 
