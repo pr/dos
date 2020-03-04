@@ -1,4 +1,4 @@
-# dos - Document and Validate Flask!
+# dos [![PyPi version](https://img.shields.io/pypi/v/dos.svg)](https://pypi.python.org/pypi/dos/) [![](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/download/releases/3.6.0/) ![t](https://img.shields.io/badge/status-stable-green.svg) [![](https://img.shields.io/github/license/pr/dos.svg)](https://github.com/pr/dos/blob/master/LICENSE.md)
 
 ## Introduction
 
