@@ -5,9 +5,9 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="dos",
-    version="1.2.0",
+    version="1.3.0",
     author="Peter Richards",
-    author_email="prichards@cap-rx.com",
+    author_email="dos@peter.net",
     license='MIT',
     description="Document and Validate Flask",
     long_description=long_description,
