@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="dos",
-    version="1.3.0",
+    version="1.4.0",
     author="Peter Richards",
     author_email="dos@peter.net",
     license='MIT',
@@ -29,5 +29,5 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.1',
 )
