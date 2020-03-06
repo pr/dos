@@ -1,4 +1,4 @@
-# dos [![PyPi version](https://img.shields.io/pypi/v/dos.svg)](https://pypi.python.org/pypi/dos/) [![](https://img.shields.io/badge/python-3.6+-blue.svg)]((https://www.python.org/downloads/)) ![t](https://img.shields.io/badge/status-stable-green.svg) [![](https://img.shields.io/github/license/pr/dos.svg)](https://github.com/pr/dos/blob/master/LICENSE)
+# dos [![PyPi version](https://img.shields.io/pypi/v/dos.svg)](https://pypi.python.org/pypi/dos/) [![](https://img.shields.io/badge/python-3.1+-blue.svg)]((https://www.python.org/downloads/)) ![t](https://img.shields.io/badge/status-stable-green.svg) [![](https://img.shields.io/github/license/pr/dos.svg)](https://github.com/pr/dos/blob/master/LICENSE)
 
 ## Introduction
 
