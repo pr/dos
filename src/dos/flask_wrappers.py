@@ -1,8 +1,9 @@
-from http import HTTPStatus
-from flask import request, jsonify
 from functools import wraps
+from http import HTTPStatus
 from http.client import responses
+
 from dos import prop
+from flask import request, jsonify
 
 
 def wrap_handler(name, func):
@@ -18,9 +19,9 @@ def wrap_route(app, func, rule, http_methods, *a, **kw):
 
     kw = kw.copy()
 
-    if type(http_methods) == str:
+    if isinstance(http_methods, str):
         kw.setdefault("methods", [http_methods.upper()])
-    elif type(http_methods) == list:
+    if isinstance(http_methods, list):
         kw.setdefault("methods", [method.upper() for method in http_methods])
     else:
         raise Exception("Not a valid representation of supported http methods.")
@@ -30,17 +31,18 @@ def wrap_route(app, func, rule, http_methods, *a, **kw):
 
         func_response = func(*args, **kwargs)
 
-        if type(func_response) == dict:
+        if isinstance(func_response, dict):
             ret = func_response
             status = ret.get("status", HTTPStatus.OK)
-        elif type(func_response) == tuple:
+        if isinstance(func_response, tuple):
             ret = func_response[1]
 
             affiliated_response = responses.get(func_response[0])
+
             if affiliated_response is None:
                 raise Exception(f"{func_response[0]} is not a valid http code!!")
-            else:
-                status = func_response[0]
+
+            status = func_response[0]
         else:
             raise Exception("Must be a dict or a tuple!")
 
@@ -72,7 +74,7 @@ def wrap_validation(handler, module):
     return validation_wrapper
 
 
-def validate_input(given_request, input_schema):
+def validate_input(given_request, input_schema):  # pylint: disable=too-many-statements
     message = []
     field_error_messages = {}
     http_status = HTTPStatus.OK

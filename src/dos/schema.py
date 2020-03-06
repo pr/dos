@@ -18,10 +18,10 @@ class Fields:
         if overrides:
             for override_name, override_values in overrides.items():
 
-                prop = cloned[override_name]
+                overridden_prop = cloned[override_name]
 
                 for override_attr, override_value in override_values.items():
-                    setattr(prop, override_attr, override_value)
+                    setattr(overridden_prop, override_attr, override_value)
 
         if only:
 
