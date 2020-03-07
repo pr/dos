@@ -138,7 +138,7 @@ For more about the Flask Wrappers, please look [here](#flask-wrappers)
 That's all there is to it. Once the general structure is set up, each additional endpoint should be relatively simple 
 to implement.
 
-To run the full working example, please see [pet_shop](https://github.com/pr/dos/examples/tutorial/pet_shop). 
+To run the full working example, please see [pet_shop](https://github.com/pr/dos/tree/master/examples/tutorial/pet_shop). 
 
 ## dos in Depth
 
