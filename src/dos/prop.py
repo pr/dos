@@ -24,7 +24,7 @@ class OpenAPIPropType(enum.Enum):
 
 class ValidationError(ValueError):
     def __init__(self, message):
-        super().__init__()
+        super().__init__(message)
         self.message = message
 
 
