@@ -21,7 +21,7 @@ def wrap_route(app, func, rule, http_methods, *a, **kw):
 
     if isinstance(http_methods, str):
         kw.setdefault("methods", [http_methods.upper()])
-    if isinstance(http_methods, list):
+    elif isinstance(http_methods, list):
         kw.setdefault("methods", [method.upper() for method in http_methods])
     else:
         raise Exception("Not a valid representation of supported http methods.")
