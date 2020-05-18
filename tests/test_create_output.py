@@ -1,3 +1,4 @@
+import arrow
 from http import HTTPStatus
 import pytest
 
@@ -1001,3 +1002,71 @@ def test_output_numeric_string():
     assert returned_dict == {
         "basic_number": "80.99"
     }
+
+
+def test_arrow_date():
+    output_schema = {
+        HTTPStatus.OK: {
+            "arrow_date": prop.DateTime(),
+        }
+    }
+
+    result = HTTPStatus.OK, {
+        "arrow_date": arrow.get(2020, 7, 1)
+    }
+
+    http_status_code, returned_dict = create_output(result, output_schema)
+    assert http_status_code == 200
+    assert returned_dict == {
+        "arrow_date": "2020-07-01T00:00:00+00:00"
+    }
+
+
+def test_none_date_in_a_string():
+    output_schema = {
+        HTTPStatus.OK: {
+            "arrow_date": prop.DateTime(required=False, nullable=True),
+        }
+    }
+
+    result = HTTPStatus.OK, {
+        "arrow_date": "None"
+    }
+
+    http_status_code, returned_dict = create_output(result, output_schema)
+    assert http_status_code == 200
+    assert returned_dict == {
+        "arrow_date": "None"
+    }
+
+
+def test_none_date_not_in_a_string():
+    output_schema = {
+        HTTPStatus.OK: {
+            "arrow_date": prop.DateTime(required=False, nullable=True),
+        }
+    }
+
+    result = HTTPStatus.OK, {
+        "arrow_date": None
+    }
+
+    http_status_code, returned_dict = create_output(result, output_schema)
+    assert http_status_code == 200
+    assert returned_dict == {}
+
+
+def test_none_enum():
+    output_schema = {
+        HTTPStatus.OK: {
+            "enum": prop.Enum(required=False, nullable=True),
+        }
+    }
+
+    result = HTTPStatus.OK, {
+        "enum": None
+    }
+
+    http_status_code, returned_dict = create_output(result, output_schema)
+    assert http_status_code == 200
+    assert returned_dict == {}

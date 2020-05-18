@@ -160,6 +160,9 @@ class DateTime(String):
         return extract_arrow(prop_value)
 
     def format_output(self, prop_value):
+        if prop_value is None:
+            return None
+
         return str(prop_value)
 
 
@@ -168,6 +171,9 @@ class Enum(String):
     types = enum.Enum
 
     def format_output(self, prop_value):
+        if prop_value is None:
+            return None
+
         return str(prop_value.value)
 
 
